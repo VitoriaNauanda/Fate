@@ -8,6 +8,7 @@ using std::string;
 using std::vector;
 class Fada
 {
+    friend ostream &operator<<( ostream &, Fada & );
 public:
     Fada();
     Fada(int);

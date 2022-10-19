@@ -9,6 +9,7 @@
 #include <vector>
 using std::vector;
 
+
 int main(){
     Fate fate;
     Fada fada;
@@ -55,5 +56,8 @@ int main(){
     for(int i=0; i<armas.size(); i++)
         delete armas[i];
    
+    cout << "\n\nUsando o friend ostream &operator\n";
+    cout << fate << '\n';
+    cout << fada << '\n';
     return 0;
 }

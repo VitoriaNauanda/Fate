@@ -9,6 +9,7 @@ using std::vector;
 
 class Especialista
 {
+    friend ostream &operator<<( ostream &, const Fate & );
 public:
 
     Especialista();

@@ -154,9 +154,11 @@ void Fate::mostrarInfo( )
 	cout << '\n';
 		 
 }
-/*
-ostream& operator<<(ostream& out, const Fate &fate){
-    out<<"Aluno";
-    out<<fate.alunos;
+
+ostream &operator<<(ostream &out, const Fate &fate){
+    out<<"A data de lancamento da serie eh:"<<'\n';
+    fate.DATALANCAMENTOSERIE.print();
+    out <<'\n';
+    out << "\nEh possivel ter mais temporadas de Fate" <<'\n';
+    return out;
 }
-*/

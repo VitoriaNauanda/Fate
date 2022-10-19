@@ -146,3 +146,11 @@ void Fada:: verificarForcaBruxoSangue(const BruxoSangue &bs){
        printDadosBruxoSangue(bs);
     }
 }
+ostream &operator<<(ostream &out,  Fada &fada){
+   
+    out<<"Transformacao:"<<'\n';
+    fada.transformacao();
+    out <<'\n';
+    out << "\nEh possivel ter Tansformacoes" <<'\n';
+    return out;
+}
