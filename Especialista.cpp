@@ -1,4 +1,6 @@
 #include "Especialista.h"
+#include "Escola.h"
+
 #include <iostream>
 #include <cmath>
 using std::cout;
@@ -18,7 +20,7 @@ Especialista::Especialista(int numArmas):numArmasCadastradas(0){
    numAtaque++;
    setNumAtaque(numAtaque);
    setNumArmas( numArmas ); 
-   myEspecialista = new Fate();
+   
    cout<<"Vamos para Alfea"<<'\n'; 
 }
 Especialista::Especialista(const Especialista &other):numArmasCadastradas(0){
@@ -27,6 +29,7 @@ Especialista::Especialista(const Especialista &other):numArmasCadastradas(0){
     nextEntrieInAtaque = 0;
     ataquesSize = 0;
     setNumArmas(other.numArmas); 
+    
     this->armas.resize( other.armas.size() );
     for( auto i = 0; i < other.armas.size( ); i++ )
         this->armas[ i ] = other.armas[ i ];    
@@ -43,7 +46,7 @@ Especialista::~Especialista(){
     for( auto i = 0; i < armas.size( ); i++ )
         delete this->armas[ i ]; 
     this -> armas.clear();
-    delete myEspecialista;
+    
     cout<<"Saindo de Alfea"<<'\n';
 }
 
@@ -86,11 +89,7 @@ void Especialista::cadastrarArmasEspecialista(const string &novaArma){
     cout << "Nao eh possivel cadastrar " << novaArma << '.' << " Armário cheio.\n";
 
 }
-void Especialista::printListaArmas( ) const
-{
-    for( int i = 0; i < armas.size( ); i++ )
-        cout << armas[i] << '\t' << *armas[ i ] << '\n';
-}
+
 void Especialista::registerAtaques( int numAtaque){
     cout << "\nRegistrando Ataques de Alfea" <<"\n";
 
@@ -128,18 +127,29 @@ void Especialista::alocarAtaque( int numAtaque ) {
     delete [] ataquesTemp;     
 }
 
-void Especialista::printAtaques( ) const {
 
-    cout << "\nAtaques de Alfea: "<<'\n';
-    for( int i = 0; i < nextEntrieInAtaque; i++ )
-        cout << ataquesPtr[i] << "\n";
-
-}
 void Especialista::verificaEstado()  {
     if(nextEntrieInAtaque < 1){
         cout<< "Reforçar o treinamento"<<'\n';
     }
-    if(numArmas > 0 and nextEntrieInAtaque >=1){
+    if(numArmas != 0 and nextEntrieInAtaque >=1){
         cout<<"Rumo ao ataque"<<'\n';
     }
+}
+
+ostream &operator<<(ostream &out, const Especialista &especialista){
+
+    out << "Minha lista de armas: "<< '\n';
+    for( int i = 0; i < especialista.armas.size( ); i++ )
+        out << especialista.armas[i] << '\t' << *especialista.armas[i] << '\n';
+    
+ 
+    out <<'\n';
+    
+    return out;
+}
+bool Especialista::operator!=( const Especialista & ) const{
+    if(!numArmas>0)
+        return false;
+    
 }

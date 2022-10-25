@@ -3,13 +3,13 @@
 
 #include <string>
 #include <vector>
-#include "Fate.h"
+#include "Escola.h"
 using std::string;
 using std::vector;
-
+using std::ostream;
 class Especialista
 {
-    friend ostream &operator<<( ostream &, const Fate & );
+    friend ostream &operator<<( ostream &, const Especialista & );
 public:
 
     Especialista();
@@ -23,11 +23,13 @@ public:
     void setNumArmas( int );
     void setNumAtaque( int );
     void cadastrarArmasEspecialista( const string & );
-    void printListaArmas( ) const;
+    
     void registerAtaques(int);
-    void printAtaques() const;
+   
     void verificaEstado();
     void fortaleza();
+
+    bool operator!=( const Especialista & ) const;
 private:
     int numArmas;
     int numArmasCadastradas;
@@ -39,7 +41,7 @@ private:
     int nextEntrieInAtaque;
     void alocarAtaque( int );
 
-    Fate *myEspecialista;
+   
 };
 
 #endif // ESPECIALISTA_H

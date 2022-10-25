@@ -1,29 +1,35 @@
 #include "Fada.h"
+#include "Escola.h"
 
 #include <cmath>
 #include <iostream>
 using std::cout;
 
-
-Fada::Fada():numPoderesCadastrados(0){
+int Fada::numPoderesFada = 0;
+int Fada::getNumPoderesFada( )
+{ 
+    return numPoderesFada; 
+}
+Fada::Fada():numPoderesCadastrados(0), FORCA(50.0){
 
 }
-Fada::Fada(int numPoderes):numPoderesCadastrados(0){
+Fada::Fada(int numPoderes):numPoderesCadastrados(0), FORCA(50.0){
+    
     setNumPoderes( numPoderes ); 
     nextEntrieInFada = 0;
     fadaSize = 0;
     numFada++;
     setNumFada(numFada);
-    myFate = new Fate();
+  
     cout<<"Vamos para Alfea"<<'\n';
 }
-Fada::Fada(const Fada &other):numPoderesCadastrados(0){
+Fada::Fada(const Fada &other):numPoderesCadastrados(0), FORCA(50.0){
     numPoderes++;
     numFada++;
     nextEntrieInFada=0;
     fadaSize = 0;
     setNumPoderes(other.numPoderes); 
-    myFate = new Fate();
+    
     this->poderes.resize( other.poderes.size() );
     for( auto i = 0; i < other.poderes.size( ); i++ )
         this->poderes[ i ] = other.poderes[ i ];    
@@ -40,9 +46,9 @@ Fada::~Fada(){
     delete[] fadaPtr;
     for( auto i = 0; i < poderes.size( ); i++ )
         delete this->poderes[ i ]; 
-     this -> poderes.clear();
+    this -> poderes.clear();
+    
     cout<<"Saindo de Alfea"<<'\n';
-    delete myFate;
     
 }
 int Fada::getNumPoderes()const{
@@ -52,10 +58,17 @@ int Fada::getNumFada( ) const {
     return numFada;
 }
 void Fada::setNumPoderes(int numPoderes){
-    if(numPoderes > 0){
-        this->numPoderes = numPoderes;
-    }
-    this->numPoderesCadastrados = 0;
+    if(Fada::numPoderesFada > 0)
+        Fada::numPoderesFada -= this->numPoderes;
+    
+    if ( numPoderes <= 0 )
+    {
+        numPoderes = 0;
+        return;
+    }    
+   
+    this->numPoderes = numPoderes;
+    Fada::numPoderesFada += this->numPoderes;
 }
 void Fada::setNumFada(int numFada) {
     if(numFada < 0){
@@ -66,7 +79,7 @@ void Fada::setNumFada(int numFada) {
     registerFadas(numFada);
 }
 void Fada::cadastrarPoderesFada(const string &novoPoder){
-    if( poderes.size( ) < numPoderes ) 
+    if( poderes.size( ) <= numPoderes ) 
     {
         numPoderesCadastrados++;
         poderes.push_back( new string(novoPoder) );        
@@ -95,7 +108,7 @@ void Fada::registerFadas( int numFada){
 
 }
 
-void Fada::alocarFadas( int numFada ) {
+void Fada::alocarFadas( int newFada ) {
     
     int *fadasTemp = new int[ fadaSize ];
     for ( int i = 0; i < nextEntrieInFada; i++ )
@@ -108,26 +121,14 @@ void Fada::alocarFadas( int numFada ) {
     fadaPtr = new int[ fadaSize ]; 
     for ( int i = 0; i < nextEntrieInFada; i++ )
         fadaPtr[ i ] = fadasTemp[ i ];
-    fadaPtr[ nextEntrieInFada++ ] = (numFada);
+    fadaPtr[ nextEntrieInFada++ ] = (newFada);
 
     delete [] fadasTemp;     
 }
 
-void Fada::printFadas( ) const {
-
-    cout << "\nFada de Fate: "<<'\n';
-    for( int i = 0; i < nextEntrieInFada; i++ )
-        cout << fadaPtr[i] << "\n";
-
-}
-void Fada::printListaPoderes( ) const
-{
-    for( int i = 0; i < poderes.size( ); i++ )
-        cout << poderes[i] << '\t' << *poderes[ i ] << '\n';
-}
 void Fada::transformacao(){
     if(nextEntrieInFada>=1){
-        if(numPoderes>=1){
+        if(numPoderes!=0){
             cout<<"Poderá se transformar" <<'\n';
         }
         cout <<"Estudar mais as técnicas e história de transformação"<<'\n';
@@ -141,16 +142,27 @@ void Fada::printDadosBruxoSangue(const BruxoSangue &bs){
    cout << "forca Ataque: "  << bs.forcaAtaque << '\n';
 }
 void Fada:: verificarForcaBruxoSangue(const BruxoSangue &bs){
-    if(bs.forcaAtaque >= 50){
+    if(bs.forcaAtaque >= FORCA){
        cout<<"Reforcar barreira de protecao"<<'\n';
        printDadosBruxoSangue(bs);
     }
 }
-ostream &operator<<(ostream &out,  Fada &fada){
-   
-    out<<"Transformacao:"<<'\n';
-    fada.transformacao();
+ostream &operator<<(ostream &out, const  Fada &fada){
+
+    out << "Minha lista de poderes eh: "<< '\n';
+    for( int i = 0; i < fada.poderes.size( ); i++ )
+        out << fada.poderes[i] << '\t' << *fada.poderes[ i ] << '\n';
+       
+    out << "\n Quantidade de Fadas: "<<'\n';
+    for( int i = 0; i < fada.nextEntrieInFada; i++ )
+        out << fada.fadaPtr[i] << "\n";
+    
     out <<'\n';
-    out << "\nEh possivel ter Tansformacoes" <<'\n';
+    
     return out;
 }
+
+ bool Fada:: operator!=( const Fada & ) const{
+    if(!numPoderes >0)
+        return false;
+ }

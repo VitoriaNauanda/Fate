@@ -1,32 +1,35 @@
-#ifndef FATE_H
-#define FATE_H
+#ifndef ESCOLA_H
+#define ESCOLA_H
 
+#include "Fada.h"
+#include "Especialista.h"
 #include "Data.h"
 #include <string>
 #include <vector>
 using std::string;
 using std::vector;
 using std::ostream;
-class Fate
+class Escola
 {
-    friend ostream &operator<<( ostream &, const Fate & );
+    friend ostream &operator<<( ostream &, const Escola & );
 public:
-    Fate();
-    Fate(int,const Data & = Data( 28,01,2004));
-    Fate(const Fate &);
-    ~Fate();
+    Escola();
+    Escola(int,const Fada &,const Data & = Data( 28,01,2004));
+     Escola(int, const Especialista &);
+    Escola(const Escola &);
+    ~Escola();
     int getNumAlunos( ) const;
     int getNumProfessor()const;
     static int getNumAlunosAlfea( );
     void setNumAlunos( int );
     void setNumProfessor( int );
     void cadastrarAlunoFate( const string & );
-    void registerProfessores(int);
-    void printListaAlunos( ) const;
-    void printProfessores( ) const;
+    void registerProfessores(const string &);
+
     void fortaleza();
-    static void mostrarInfo( );
-  
+    
+   
+    bool operator!=( const Escola & ) const;
 private:
     
     int numAlunos;
@@ -34,13 +37,16 @@ private:
     vector<string *> alunos;
     static int numAlunosAlfea;
     int numProfessor;
-    int *professoresPtr;
+    string *  *professoresPtr;
     int professoresSize;
     int nextEntrieInProfessores;
-    void alocarProfessores( int );
+    void alocarProfessores(const string & );
     
     const static Data DATALANCAMENTOSERIE;
-   
+    Fada fadaPoderes;
+    Especialista especialistaArmas;
+    
+    string tipoAluno;
 };
 
-#endif // FATE_H
+#endif // ESCOLA_H

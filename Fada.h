@@ -1,14 +1,16 @@
 #ifndef FADA_H
 #define FADA_H
 
-#include "Fate.h"
+#include "Escola.h"
+
 #include <string>
 #include <vector>
 using std::string;
 using std::vector;
+using std::ostream;
 class Fada
 {
-    friend ostream &operator<<( ostream &, Fada & );
+    friend ostream &operator<<( ostream &, const Fada & );
 public:
     Fada();
     Fada(int);
@@ -22,15 +24,17 @@ public:
     };
     int getNumPoderes( ) const;
     int getNumFada()const;
+    static int getNumPoderesFada( );
     void setNumPoderes( int );
     void setNumFada( int );
     void cadastrarPoderesFada( const string & );
     void registerFadas(int);
-    void printFadas()const;
-    void printListaPoderes( ) const;
+
     void transformacao();
     void printDadosBruxoSangue(const BruxoSangue &);
     void verificarForcaBruxoSangue(const BruxoSangue &);
+
+    bool operator!=( const Fada & ) const;
 private:
    int numPoderes;
    int numPoderesCadastrados;
@@ -40,8 +44,10 @@ private:
    int fadaSize;
    int nextEntrieInFada;
    void alocarFadas( int );
+  
+   static int numPoderesFada;
+   const float FORCA;
    
-   Fate *myFate;
 };
 
 #endif // FADA_H
