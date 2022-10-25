@@ -19,9 +19,11 @@ public:
 
     int getNumArmas( ) const;
     int getNumAtaque()const;
+    string getArma() const;
     static int getNumArmarioAlfea( );
     void setNumArmas( int );
     void setNumAtaque( int );
+    void setArma( const string & );
     void cadastrarArmasEspecialista( const string & );
     
     void registerAtaques(int);
@@ -30,6 +32,7 @@ public:
     void fortaleza();
 
     bool operator!=( const Especialista & ) const;
+    bool operator==( const Especialista & )const;
 private:
     int numArmas;
     int numArmasCadastradas;
@@ -40,7 +43,7 @@ private:
     int ataquesSize;
     int nextEntrieInAtaque;
     void alocarAtaque( int );
-
+    string arma;
    
 };
 

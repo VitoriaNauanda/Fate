@@ -23,7 +23,7 @@ Escola::Escola():numAlunosCadastrados(0), fadaPoderes(), especialistaArmas(){
    cout <<"Ensina alunos"<<'\n';
 }
 
-Escola::Escola(int numAlunos, const Fada &fadaPoder, const Data &dataOut):numAlunosCadastrados(0), tipoAluno("fadaPoder"){
+Escola::Escola(int numAlunos, const Data &dataOut):numAlunosCadastrados(0){
     setNumAlunos( numAlunos );
     nextEntrieInProfessores = 0;
     professoresSize = 0;
@@ -33,15 +33,8 @@ Escola::Escola(int numAlunos, const Fada &fadaPoder, const Data &dataOut):numAlu
    
     
 }
-Escola::Escola(int numAlunos, const Especialista &armas):numAlunosCadastrados(0), tipoAluno("armas"){
-    setNumAlunos( numAlunos );
-    nextEntrieInProfessores = 0;
-    professoresSize = 0;
-    numProfessor++;
-    setNumProfessor(numProfessor);
-    
-    
-}
+
+
 Escola::Escola(const Escola &other):numAlunosCadastrados(0), fadaPoderes(other.fadaPoderes), especialistaArmas(other.especialistaArmas){
     numAlunos++;
     numProfessor++;
@@ -49,6 +42,14 @@ Escola::Escola(const Escola &other):numAlunosCadastrados(0), fadaPoderes(other.f
     professoresSize = 0;
     
     setNumAlunos(other.numAlunos); 
+    cout << "Em copia as fadas sao: " << '\n';
+    fadaPoderes.getName();
+    cout << "Em copia as armas" << '\n';
+    especialistaArmas.getArma();
+    if(fadaPoderes.getNumPoderes() <= 0 and especialistaArmas.getNumArmas()<=0){
+        cout<<"Alfea nao esta  protegida"<<'\n';
+    }
+    cout<<"Alfea  esta  protegida"<<'\n';
     
     this->alunos.resize( other.alunos.size() );
     for( auto i = 0; i < other.alunos.size( ); i++ )
@@ -150,7 +151,15 @@ void Escola::alocarProfessores( const string &newProfessor ) {
 void Escola::fortaleza(){
     if(nextEntrieInProfessores !=1){
         cout << "Alfea merece atenção da rainha!"<< '\n';
-        
+        cout << "Em fortaleza as fadas sao: " << '\n';
+        fadaPoderes.getName();
+        cout << "Em fortaleza as armas" << '\n';
+        especialistaArmas.getArma();
+        if(fadaPoderes.getNumPoderes() <= 0 and especialistaArmas.getNumArmas()<=0){
+            cout<<"Alfea nao esta  protegida"<<'\n';
+        }
+        cout<<"Alfea  esta  protegida"<<'\n';
+
     }
 }
 
@@ -173,3 +182,10 @@ ostream &operator<<(ostream &out, const Escola &escola){
     if(!numAlunos >0)
         return false;
  }
+
+bool Escola::operator==( const Escola & )const{
+    if(numAlunos == numAlunosAlfea){
+        cout<< "Existem alunos suficientes para proteger a escola"<<'\n';
+        return true;
+    }
+}

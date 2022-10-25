@@ -57,6 +57,9 @@ int Fada::getNumPoderes()const{
 int Fada::getNumFada( ) const {
     return numFada;
 }
+string Fada::getName() const{
+    return name;
+}
 void Fada::setNumPoderes(int numPoderes){
     if(Fada::numPoderesFada > 0)
         Fada::numPoderesFada -= this->numPoderes;
@@ -77,6 +80,9 @@ void Fada::setNumFada(int numFada) {
     }
     this ->numFada = numFada;
     registerFadas(numFada);
+}
+void Fada::setName(const string &name){
+    this -> name = name;
 }
 void Fada::cadastrarPoderesFada(const string &novoPoder){
     if( poderes.size( ) <= numPoderes ) 
@@ -157,12 +163,20 @@ ostream &operator<<(ostream &out, const  Fada &fada){
     for( int i = 0; i < fada.nextEntrieInFada; i++ )
         out << fada.fadaPtr[i] << "\n";
     
+    out << "\n Bruxos: "<<'\n';
+    
     out <<'\n';
     
     return out;
 }
 
- bool Fada:: operator!=( const Fada & ) const{
-    if(!numPoderes >0)
-        return false;
+ bool Fada:: operator!=( const Fada &) const{
+    if(numPoderes != 0)
+        return true;
+ }
+ bool Fada::operator==( const Fada & )const{
+    if(numPoderes == 0){
+        cout <<"Precisamos de mais poderes"<<'\n';
+        return true;
+    }
  }

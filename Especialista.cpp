@@ -71,6 +71,9 @@ void Especialista::setNumAtaque(int numAtaque) {
     this ->numAtaque = numAtaque;
     registerAtaques(numAtaque);
 }
+void Especialista::setArma(const string& arma){
+    this-> arma = arma;
+}
 int Especialista:: getNumArmas()const{
     return this->numArmas;
 }
@@ -78,6 +81,9 @@ int Especialista::getNumAtaque( ) const {
     return numAtaque;
 }
 
+string Especialista::getArma() const{
+    return arma;
+}
 void Especialista::cadastrarArmasEspecialista(const string &novaArma){
     if( armas.size( ) < numArmas ) 
     {
@@ -152,4 +158,10 @@ bool Especialista::operator!=( const Especialista & ) const{
     if(!numArmas>0)
         return false;
     
+}
+bool Especialista:: operator==( const Especialista & )const{
+    if(numArmas == numAtaque){
+        cout <<"Estamos bem"<<"\n";
+        return true;
+    }
 }

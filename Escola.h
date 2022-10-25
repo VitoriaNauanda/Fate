@@ -14,8 +14,8 @@ class Escola
     friend ostream &operator<<( ostream &, const Escola & );
 public:
     Escola();
-    Escola(int,const Fada &,const Data & = Data( 28,01,2004));
-     Escola(int, const Especialista &);
+    Escola(int,const Data & = Data( 28,01,2004));
+
     Escola(const Escola &);
     ~Escola();
     int getNumAlunos( ) const;
@@ -30,6 +30,7 @@ public:
     
    
     bool operator!=( const Escola & ) const;
+    bool operator==( const Escola & )const;
 private:
     
     int numAlunos;
@@ -46,7 +47,7 @@ private:
     Fada fadaPoderes;
     Especialista especialistaArmas;
     
-    string tipoAluno;
+    
 };
 
 #endif // ESCOLA_H

@@ -8,6 +8,11 @@
 using std::string;
 using std::vector;
 using std::ostream;
+struct BruxoSangue{
+        string nome;
+        string tipoPoder;
+        double forcaAtaque;
+};
 class Fada
 {
     friend ostream &operator<<( ostream &, const Fada & );
@@ -17,16 +22,14 @@ public:
     Fada(const Fada &);
     ~Fada();
 
-    struct BruxoSangue{
-        string nome;
-        string tipoPoder;
-        double forcaAtaque;
-    };
+
     int getNumPoderes( ) const;
     int getNumFada()const;
+    string getName()const;
     static int getNumPoderesFada( );
     void setNumPoderes( int );
     void setNumFada( int );
+    void setName( const string &);
     void cadastrarPoderesFada( const string & );
     void registerFadas(int);
 
@@ -35,6 +38,7 @@ public:
     void verificarForcaBruxoSangue(const BruxoSangue &);
 
     bool operator!=( const Fada & ) const;
+    bool operator==( const Fada & )const;
 private:
    int numPoderes;
    int numPoderesCadastrados;
@@ -47,6 +51,7 @@ private:
   
    static int numPoderesFada;
    const float FORCA;
+   string name;
    
 };
 
