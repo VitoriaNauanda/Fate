@@ -78,7 +78,7 @@ int main(){
         delete poderes[i];
     for(int i=0; i<armas.size(); i++)
         delete armas[i];
-    
+    fate.realizaFusao();
     cout<<fate;
     cout<<fada;
     cout<<especialista;

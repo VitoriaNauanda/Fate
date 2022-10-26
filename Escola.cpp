@@ -178,14 +178,53 @@ ostream &operator<<(ostream &out, const Escola &escola){
     return out;
 }
 
- bool Escola:: operator!=( const Escola & ) const{
-    if(!numAlunos >0)
-        return false;
+ bool Escola:: operator!=( const Escola &numAlunos ) const{
+    cout <<"Operador !=" <<'\n';
+    if(numAlunos != 0)
+        return true;
  }
 
-bool Escola::operator==( const Escola & )const{
+bool Escola::operator==( const Escola &numAlunos )const{
+    cout <<"Operador ==" <<'\n';
     if(numAlunos == numAlunosAlfea){
         cout<< "Existem alunos suficientes para proteger a escola"<<'\n';
         return true;
     }
 }
+ bool Escola::operator!() const{
+    if(!numProfessor > 0)
+        cout << "Em alfea nao tem professores " << '\n';
+        return false;
+ }
+ const Escola & Escola:: operator=( const Escola & cop){
+    cout <<"Operador =" <<'\n';
+    numAlunos++;
+    numProfessor++;
+    nextEntrieInProfessores = 0; 
+    professoresSize = 0;
+    
+    setNumAlunos(cop.numAlunos); 
+    cout << "Em copia as fadas sao: " << '\n';
+    fadaPoderes.getName();
+    cout << "Em copia as armas" << '\n';
+    especialistaArmas.getArma();
+    if(fadaPoderes.getNumPoderes() <= 0 and especialistaArmas.getNumArmas()<=0){
+        cout<<"Alfea nao esta  protegida"<<'\n';
+    }
+    cout<<"Alfea  esta  protegida"<<'\n';
+    
+    this->alunos.resize( cop.alunos.size() );
+    for( auto i = 0; i < cop.alunos.size( ); i++ )
+        this->alunos[ i ] = cop.alunos[ i ]; 
+    
+    this->nextEntrieInProfessores = cop.nextEntrieInProfessores;
+    this->professoresPtr = new string*[this->professoresSize];
+    for(int i = 0; i < nextEntrieInProfessores; i++)
+        this -> professoresPtr[i] = cop.professoresPtr[i];   
+ }
+ void Escola ::realizaFusao(){
+    if(!numAlunos == numAlunosCadastrados){
+        numAlunos = numAlunos + 1;
+    }
+    
+ }

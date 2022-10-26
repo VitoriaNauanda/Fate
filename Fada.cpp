@@ -133,11 +133,13 @@ void Fada::alocarFadas( int newFada ) {
 }
 
 void Fada::transformacao(){
+    
     if(nextEntrieInFada>=1){
         if(numPoderes!=0){
             cout<<"Poderá se transformar" <<'\n';
         }
         cout <<"Estudar mais as técnicas e história de transformação"<<'\n';
+       
     }
     cout <<"Ainda não é possível se transformar e nem usar poderes"<<'\n';
 }
@@ -170,13 +172,36 @@ ostream &operator<<(ostream &out, const  Fada &fada){
     return out;
 }
 
- bool Fada:: operator!=( const Fada &) const{
+ bool Fada:: operator!=( const Fada &numPoderes) const{
+    cout << "   Operador de != Fada" << '\n';
     if(numPoderes != 0)
         return true;
  }
- bool Fada::operator==( const Fada & )const{
+ bool Fada::operator==( const Fada &numPoderes )const{
     if(numPoderes == 0){
         cout <<"Precisamos de mais poderes"<<'\n';
         return true;
     }
  }
+ bool Fada:: operator!() const{
+    if(!numFada > 0){
+        cout << "Alfea necessita de fadas! " << '\n';
+        return false;
+    }
+ }
+const Fada & Fada:: operator=( const Fada & other){
+    numPoderes++;
+    numFada++;
+    nextEntrieInFada=0;
+    fadaSize = 0;
+    setNumPoderes(other.numPoderes); 
+    
+    this->poderes.resize( other.poderes.size() );
+    for( auto i = 0; i < other.poderes.size( ); i++ )
+        this->poderes[ i ] = other.poderes[ i ];    
+    
+    this->nextEntrieInFada = other.nextEntrieInFada;
+    this->fadaPtr = new int[this->fadaSize];
+    for(int i = 0; i < nextEntrieInFada; i++)
+        this -> fadaPtr[i] = other.fadaPtr[i]; 
+}

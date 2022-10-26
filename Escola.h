@@ -27,10 +27,13 @@ public:
     void registerProfessores(const string &);
 
     void fortaleza();
-    
+    void realizaFusao();
    
     bool operator!=( const Escola & ) const;
     bool operator==( const Escola & )const;
+    bool operator!() const;
+    const Escola &operator=( const Escola & );
+
 private:
     
     int numAlunos;
