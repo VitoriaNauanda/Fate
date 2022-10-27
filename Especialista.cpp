@@ -154,9 +154,11 @@ ostream &operator<<(ostream &out, const Especialista &especialista){
     
     return out;
 }
+
 bool Especialista::operator!=( const Especialista & ) const{
     if(numArmas!=0)
         return true;
+    return false;
     
 }
 bool Especialista:: operator==( const Especialista & )const{
@@ -164,19 +166,18 @@ bool Especialista:: operator==( const Especialista & )const{
         cout <<"Estamos bem"<<"\n";
         return true;
     }
+    return false;
 }
 bool Especialista:: operator!() const{
     if(!numAtaque >0){
         cout <<"Precisamos melhorar" << '\n';
         return false;
     }
-
+    return true;
 }
- const Especialista & Especialista::operator=( const Especialista &other ){
-    numArmas++;
-    numAtaque++;
-    nextEntrieInAtaque = 0;
-    ataquesSize = 0;
+
+void  Especialista::operator=( const Especialista &other ){
+
     setNumArmas(other.numArmas); 
     
     this->armas.resize( other.armas.size() );
@@ -187,4 +188,4 @@ bool Especialista:: operator!() const{
     this->ataquesPtr = new int[this->ataquesSize];
     for(int i = 0; i < nextEntrieInAtaque; i++)
         this -> ataquesPtr[i] = other.ataquesPtr[i];
- }
+}

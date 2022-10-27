@@ -32,7 +32,7 @@ public:
     bool operator!=( const Escola & ) const;
     bool operator==( const Escola & )const;
     bool operator!() const;
-    const Escola &operator=( const Escola & );
+    void operator=( const Escola & );
 
 private:
     

@@ -60,6 +60,9 @@ int Fada::getNumFada( ) const {
 string Fada::getName() const{
     return name;
 }
+string Fada::getNomePoder() const{
+    return nomePoder;
+}
 void Fada::setNumPoderes(int numPoderes){
     if(Fada::numPoderesFada > 0)
         Fada::numPoderesFada -= this->numPoderes;
@@ -83,6 +86,9 @@ void Fada::setNumFada(int numFada) {
 }
 void Fada::setName(const string &name){
     this -> name = name;
+}
+void Fada::setNomePoder(const string &nomePoder){
+    this -> nomePoder = nomePoder;
 }
 void Fada::cadastrarPoderesFada(const string &novoPoder){
     if( poderes.size( ) <= numPoderes ) 
@@ -156,7 +162,7 @@ void Fada:: verificarForcaBruxoSangue(const BruxoSangue &bs){
     }
 }
 ostream &operator<<(ostream &out, const  Fada &fada){
-
+    BruxoSangue bs;
     out << "Minha lista de poderes eh: "<< '\n';
     for( int i = 0; i < fada.poderes.size( ); i++ )
         out << fada.poderes[i] << '\t' << *fada.poderes[ i ] << '\n';
@@ -165,8 +171,11 @@ ostream &operator<<(ostream &out, const  Fada &fada){
     for( int i = 0; i < fada.nextEntrieInFada; i++ )
         out << fada.fadaPtr[i] << "\n";
     
-    out << "\n Bruxos: "<<'\n';
-    
+    out << "\n Bruxos "<<'\n';
+    out << bs.nome << "\n";
+    out << bs.tipoPoder << "\n";
+    out << bs.forcaAtaque << "\n";
+
     out <<'\n';
     
     return out;
@@ -176,24 +185,25 @@ ostream &operator<<(ostream &out, const  Fada &fada){
     cout << "   Operador de != Fada" << '\n';
     if(numPoderes != 0)
         return true;
+    return false;
  }
  bool Fada::operator==( const Fada &numPoderes )const{
     if(numPoderes == 0){
         cout <<"Precisamos de mais poderes"<<'\n';
         return true;
     }
+    return false;
  }
  bool Fada:: operator!() const{
     if(!numFada > 0){
         cout << "Alfea necessita de fadas! " << '\n';
         return false;
     }
- }
-const Fada & Fada:: operator=( const Fada & other){
-    numPoderes++;
-    numFada++;
-    nextEntrieInFada=0;
-    fadaSize = 0;
+    return true;
+ } 
+
+void  Fada:: operator=( const Fada & other){
+ 
     setNumPoderes(other.numPoderes); 
     
     this->poderes.resize( other.poderes.size() );
@@ -204,4 +214,5 @@ const Fada & Fada:: operator=( const Fada & other){
     this->fadaPtr = new int[this->fadaSize];
     for(int i = 0; i < nextEntrieInFada; i++)
         this -> fadaPtr[i] = other.fadaPtr[i]; 
+    
 }

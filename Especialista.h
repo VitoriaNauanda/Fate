@@ -34,7 +34,7 @@ public:
     bool operator!=( const Especialista & ) const;
     bool operator==( const Especialista & )const;
     bool operator!() const;
-    const Especialista & operator=( const Especialista & );
+    void operator=( const Especialista & );
 private:
     int numArmas;
     int numArmasCadastradas;

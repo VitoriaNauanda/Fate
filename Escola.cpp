@@ -54,11 +54,12 @@ Escola::Escola(const Escola &other):numAlunosCadastrados(0), fadaPoderes(other.f
     this->alunos.resize( other.alunos.size() );
     for( auto i = 0; i < other.alunos.size( ); i++ )
         this->alunos[ i ] = other.alunos[ i ]; 
-    
+   
     this->nextEntrieInProfessores = other.nextEntrieInProfessores;
     this->professoresPtr = new string*[this->professoresSize];
     for(int i = 0; i < nextEntrieInProfessores; i++)
-        this -> professoresPtr[i] = other.professoresPtr[i];   
+        this -> professoresPtr[i] = other.professoresPtr[i];  
+  
 }
 Escola::~Escola(){
     numAlunos--;
@@ -168,13 +169,15 @@ ostream &operator<<(ostream &out, const Escola &escola){
     out <<"Os alunos sao:" << '\n';
     for( int i = 0; i < escola.alunos.size( ); i++ )
         out << escola.alunos[i] << '\t' << *escola.alunos[ i ] << '\n';
+   
     out << "\nProfessores de Fate: "<<'\n';
     for( int i = 0; i < escola.nextEntrieInProfessores; i++ )
         out << *escola.professoresPtr[i] << "\n";
+  
     out<<"A data de lancamento da serie eh:"<<'\n';
     escola.DATALANCAMENTOSERIE.print();
     out <<'\n';
-  
+    
     return out;
 }
 
@@ -182,6 +185,7 @@ ostream &operator<<(ostream &out, const Escola &escola){
     cout <<"Operador !=" <<'\n';
     if(numAlunos != 0)
         return true;
+    return false;
  }
 
 bool Escola::operator==( const Escola &numAlunos )const{
@@ -190,18 +194,18 @@ bool Escola::operator==( const Escola &numAlunos )const{
         cout<< "Existem alunos suficientes para proteger a escola"<<'\n';
         return true;
     }
+    return false;
 }
  bool Escola::operator!() const{
     if(!numProfessor > 0)
         cout << "Em alfea nao tem professores " << '\n';
         return false;
+    return true;
  }
- const Escola & Escola:: operator=( const Escola & cop){
+
+ void Escola:: operator=( const Escola & cop){
     cout <<"Operador =" <<'\n';
-    numAlunos++;
-    numProfessor++;
-    nextEntrieInProfessores = 0; 
-    professoresSize = 0;
+ 
     
     setNumAlunos(cop.numAlunos); 
     cout << "Em copia as fadas sao: " << '\n';
@@ -222,6 +226,7 @@ bool Escola::operator==( const Escola &numAlunos )const{
     for(int i = 0; i < nextEntrieInProfessores; i++)
         this -> professoresPtr[i] = cop.professoresPtr[i];   
  }
+ 
  void Escola ::realizaFusao(){
     if(!numAlunos == numAlunosCadastrados){
         numAlunos = numAlunos + 1;
