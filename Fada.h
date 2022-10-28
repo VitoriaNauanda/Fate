@@ -37,8 +37,8 @@ public:
     void registerFadas(int);
 
     void transformacao();
-    void printDadosBruxoSangue(const BruxoSangue &);
-    void verificarForcaBruxoSangue(const BruxoSangue &);
+    void printDadosBruxoSangue(BruxoSangue);
+    void verificarForcaBruxoSangue(BruxoSangue);
 
     bool operator!=( const Fada & ) const;
     bool operator==( const Fada & )const;

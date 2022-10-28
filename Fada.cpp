@@ -11,7 +11,9 @@ int Fada::getNumPoderesFada( )
     return numPoderesFada; 
 }
 Fada::Fada():numPoderesCadastrados(0), FORCA(50.0){
-
+    nextEntrieInFada = 0;
+    fadaSize = 0;
+    numFada++;
 }
 Fada::Fada(int numPoderes):numPoderesCadastrados(0), FORCA(50.0){
     
@@ -26,14 +28,14 @@ Fada::Fada(int numPoderes):numPoderesCadastrados(0), FORCA(50.0){
 Fada::Fada(const Fada &other):numPoderesCadastrados(0), FORCA(50.0){
     numPoderes++;
     numFada++;
-    nextEntrieInFada=0;
-    fadaSize = 0;
+    
     setNumPoderes(other.numPoderes); 
     
     this->poderes.resize( other.poderes.size() );
     for( auto i = 0; i < other.poderes.size( ); i++ )
         this->poderes[ i ] = other.poderes[ i ];    
     
+    this->fadaSize = other.fadaSize;
     this->nextEntrieInFada = other.nextEntrieInFada;
     this->fadaPtr = new int[this->fadaSize];
     for(int i = 0; i < nextEntrieInFada; i++)
@@ -124,7 +126,7 @@ void Fada::alocarFadas( int newFada ) {
     
     int *fadasTemp = new int[ fadaSize ];
     for ( int i = 0; i < nextEntrieInFada; i++ )
-        fadaPtr[ i ] = fadasTemp[ i ];
+        fadasTemp[ i ] = fadaPtr[ i ];
 
     delete [] fadaPtr;
 
@@ -142,46 +144,40 @@ void Fada::transformacao(){
     
     if(nextEntrieInFada>=1){
         if(numPoderes!=0){
-            cout<<"Poderá se transformar" <<'\n';
+            cout<<"Pode se transformar" <<'\n';
         }
-        cout <<"Estudar mais as técnicas e história de transformação"<<'\n';
+        cout <<"Estudar mais as tecnicas e historia de transformacao"<<'\n';
        
     }
-    cout <<"Ainda não é possível se transformar e nem usar poderes"<<'\n';
+    cout <<"Ainda nao eh possivel se transformar e nem usar poderes"<<'\n';
 }
 
-void Fada::printDadosBruxoSangue(const BruxoSangue &bs){
+void Fada::printDadosBruxoSangue(BruxoSangue bs){
    cout << "Nome: " << bs.nome << '\n';
-   cout << "tipo Poder: " << bs.tipoPoder << '\n'; 
-   cout << "forca Ataque: "  << bs.forcaAtaque << '\n';
+   cout << "Tipo Poder: " << bs.tipoPoder << '\n'; 
+   cout << "Forca Ataque: "  << bs.forcaAtaque << '\n';
 }
-void Fada:: verificarForcaBruxoSangue(const BruxoSangue &bs){
+void Fada:: verificarForcaBruxoSangue(BruxoSangue bs){
     if(bs.forcaAtaque >= FORCA){
        cout<<"Reforcar barreira de protecao"<<'\n';
        printDadosBruxoSangue(bs);
     }
 }
 ostream &operator<<(ostream &out, const  Fada &fada){
-    BruxoSangue bs;
     out << "Minha lista de poderes eh: "<< '\n';
     for( int i = 0; i < fada.poderes.size( ); i++ )
         out << fada.poderes[i] << '\t' << *fada.poderes[ i ] << '\n';
        
-    out << "\n Quantidade de Fadas: "<<'\n';
+    out << "\nQuantidade de Fadas: "<<'\n';
     for( int i = 0; i < fada.nextEntrieInFada; i++ )
         out << fada.fadaPtr[i] << "\n";
-    
-    out << "\n Bruxos "<<'\n';
-    out << bs.nome << "\n";
-    out << bs.tipoPoder << "\n";
-    out << bs.forcaAtaque << "\n";
 
     out <<'\n';
     
     return out;
 }
 
- bool Fada:: operator!=( const Fada &numPoderes) const{
+ bool Fada::operator!=( const Fada &numPoderes) const{
     cout << "   Operador de != Fada" << '\n';
     if(numPoderes != 0)
         return true;
@@ -202,7 +198,7 @@ ostream &operator<<(ostream &out, const  Fada &fada){
     return true;
  } 
 
-void  Fada:: operator=( const Fada & other){
+void  Fada::operator=( const Fada & other){
  
     setNumPoderes(other.numPoderes); 
     

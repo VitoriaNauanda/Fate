@@ -92,7 +92,7 @@ void Especialista::cadastrarArmasEspecialista(const string &novaArma){
         return;
     }
 
-    cout << "Nao eh possivel cadastrar " << novaArma << '.' << " Armário cheio.\n";
+    cout << "Nao eh possivel cadastrar " << novaArma << '.' << " Armario cheio.\n";
 
 }
 
@@ -136,9 +136,9 @@ void Especialista::alocarAtaque( int numAtaque ) {
 
 void Especialista::verificaEstado()  {
     if(nextEntrieInAtaque < 1){
-        cout<< "Reforçar o treinamento"<<'\n';
+        cout<< "Reforcar o treinamento"<<'\n';
     }
-    if(numArmas != 0 and nextEntrieInAtaque >=1){
+    if(numArmas != 0 && nextEntrieInAtaque >=1){
         cout<<"Rumo ao ataque"<<'\n';
     }
 }

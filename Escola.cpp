@@ -4,8 +4,10 @@
 #include "Especialista.h"
 #include <iostream>
 #include <cmath>
+#include <string>
 
 using std::cout;
+using std::string;
 using std::ostream;
 
 const Data Escola::DATALANCAMENTOSERIE = Data( 22, 1, 2021 );
@@ -46,7 +48,7 @@ Escola::Escola(const Escola &other):numAlunosCadastrados(0), fadaPoderes(other.f
     fadaPoderes.getName();
     cout << "Em copia as armas" << '\n';
     especialistaArmas.getArma();
-    if(fadaPoderes.getNumPoderes() <= 0 and especialistaArmas.getNumArmas()<=0){
+    if(fadaPoderes.getNumPoderes() <= 0 && especialistaArmas.getNumArmas()<=0){
         cout<<"Alfea nao esta  protegida"<<'\n';
     }
     cout<<"Alfea  esta  protegida"<<'\n';
@@ -99,6 +101,7 @@ int Escola::getNumProfessor( ) const {
     return numProfessor;
 }
 void Escola::cadastrarAlunoFate(const string &novoAluno){
+
     if( alunos.size( ) < numAlunos ) 
     {
         numAlunosCadastrados++;
@@ -151,12 +154,12 @@ void Escola::alocarProfessores( const string &newProfessor ) {
 
 void Escola::fortaleza(){
     if(nextEntrieInProfessores !=1){
-        cout << "Alfea merece atenção da rainha!"<< '\n';
+        cout << "Alfea merece atencao da rainha!"<< '\n';
         cout << "Em fortaleza as fadas sao: " << '\n';
         fadaPoderes.getName();
         cout << "Em fortaleza as armas" << '\n';
         especialistaArmas.getArma();
-        if(fadaPoderes.getNumPoderes() <= 0 and especialistaArmas.getNumArmas()<=0){
+        if(fadaPoderes.getNumPoderes() <= 0 && especialistaArmas.getNumArmas()<=0){
             cout<<"Alfea nao esta  protegida"<<'\n';
         }
         cout<<"Alfea  esta  protegida"<<'\n';
@@ -194,12 +197,14 @@ bool Escola::operator==( const Escola &numAlunos )const{
         cout<< "Existem alunos suficientes para proteger a escola"<<'\n';
         return true;
     }
+    
     return false;
 }
  bool Escola::operator!() const{
-    if(!numProfessor > 0)
+    if(numProfessor == 0){
         cout << "Em alfea nao tem professores " << '\n';
         return false;
+    }
     return true;
  }
 
@@ -212,7 +217,7 @@ bool Escola::operator==( const Escola &numAlunos )const{
     fadaPoderes.getName();
     cout << "Em copia as armas" << '\n';
     especialistaArmas.getArma();
-    if(fadaPoderes.getNumPoderes() <= 0 and especialistaArmas.getNumArmas()<=0){
+    if(fadaPoderes.getNumPoderes() <= 0 && especialistaArmas.getNumArmas()<=0){
         cout<<"Alfea nao esta  protegida"<<'\n';
     }
     cout<<"Alfea  esta  protegida"<<'\n';
