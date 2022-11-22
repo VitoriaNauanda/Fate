@@ -6,6 +6,8 @@
 #include "Especialista.cpp"
 #include "Data.h"
 #include "Data.cpp"
+#include "Personagem.h"
+#include "Personagem.cpp"
 #include <iostream>
 #include <vector>
 using std::string;
@@ -14,11 +16,15 @@ using std::cout;
 
 int main()
 {
+ /*
   Escola fate;
   Fada fada1;
   Fada fada2;
   Fada fada3;
   Especialista especialista;
+ 
+  Personagem personagem;
+ 
   string nome1 = "Bloom";
   string nome2 = "Musa";
   string nome3 = "Stella";
@@ -29,6 +35,8 @@ int main()
 
   string arma1 = "Punhal";
   string arma2 = "Espada";
+  personagem.setName("Aisha");
+  personagem.setIdade(12);
   
   vector<string *> alunos;
   fada1.setName(nome1);
@@ -77,11 +85,12 @@ int main()
   cout << fate;
   cout << fada1;
   cout << especialista;
+  cout << personagem;
 
   for (int i = 0; i < alunos.size(); i++)
     delete alunos[i];
   for (int i = 0; i < armas.size(); i++)
     delete armas[i];
-
+  */
   return 0;
 }

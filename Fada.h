@@ -2,7 +2,7 @@
 #define FADA_H
 
 #include "Escola.h"
-
+#include "Personagem.h"
 #include <string>
 #include <vector>
 using std::string;
@@ -14,24 +14,25 @@ struct BruxoSangue{
     string tipoPoder;
     double forcaAtaque;
 };
-class Fada
+class Fada: public Personagem
 {
     friend ostream &operator<<( ostream &, const Fada & );
 public:
     Fada();
     Fada(int);
-    Fada(const Fada &);
+    Fada(const string &,const int,int);
+    Fada(const Fada &,const string &,const int,int);
     ~Fada();
 
 
     int getNumPoderes( ) const;
     int getNumFada()const;
-    string getName()const;
-    string getNomePoder()const;
+ //   string getName()const;
+   string getNomePoder()const;
     static int getNumPoderesFada( );
     void setNumPoderes( int );
     void setNumFada( int );
-    void setName( const string &);
+ //   void setName( const string &);
     void setNomePoder( const string &);
     void cadastrarPoderesFada( const string & );
     void registerFadas(int);
@@ -39,6 +40,8 @@ public:
     void transformacao();
     void printDadosBruxoSangue(BruxoSangue);
     void verificarForcaBruxoSangue(BruxoSangue);
+
+    void mensagemAlfea();
 
     bool operator!=( const Fada & ) const;
     bool operator==( const Fada & )const;
@@ -56,7 +59,8 @@ private:
   
    static int numPoderesFada;
    const float FORCA;
-   string name;
+
+   //string name;
    string nomePoder;
    
 };

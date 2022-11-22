@@ -1,6 +1,7 @@
 #include "Fada.h"
 #include "Escola.h"
-
+#include "Personagem.h"
+#include "Personagem.cpp"
 #include <cmath>
 #include <iostream>
 using std::cout;
@@ -15,7 +16,7 @@ Fada::Fada():numPoderesCadastrados(0), FORCA(50.0){
     fadaSize = 0;
     numFada++;
 }
-Fada::Fada(int numPoderes):numPoderesCadastrados(0), FORCA(50.0){
+Fada::Fada(const string &name, const int idade, int numPoderes):numPoderesCadastrados(0), FORCA(50.0), Personagem(name,idade){
     
     setNumPoderes( numPoderes ); 
     nextEntrieInFada = 0;
@@ -25,7 +26,7 @@ Fada::Fada(int numPoderes):numPoderesCadastrados(0), FORCA(50.0){
   
     cout<<"Vamos para Alfea"<<'\n';
 }
-Fada::Fada(const Fada &other):numPoderesCadastrados(0), FORCA(50.0){
+Fada::Fada(const Fada &other, const string &name, const int idade, int numPoderes):numPoderesCadastrados(0), FORCA(50.0), Personagem(name,idade){
     numPoderes++;
     numFada++;
     
@@ -59,9 +60,11 @@ int Fada::getNumPoderes()const{
 int Fada::getNumFada( ) const {
     return numFada;
 }
+/*
 string Fada::getName() const{
     return name;
 }
+*/
 string Fada::getNomePoder() const{
     return nomePoder;
 }
@@ -86,9 +89,11 @@ void Fada::setNumFada(int numFada) {
     this ->numFada = numFada;
     registerFadas(numFada);
 }
+/*
 void Fada::setName(const string &name){
     this -> name = name;
 }
+*/
 void Fada::setNomePoder(const string &nomePoder){
     this -> nomePoder = nomePoder;
 }
@@ -163,7 +168,14 @@ void Fada:: verificarForcaBruxoSangue(BruxoSangue bs){
        printDadosBruxoSangue(bs);
     }
 }
+
+void Fada::mensagemAlfea(){
+    if(verificaIdade(getIdade()))
+        cout << "Pode estudar em Alfea" << '\n';
+}
 ostream &operator<<(ostream &out, const  Fada &fada){
+
+    out << static_cast<Personagem>(fada);
     out << "Minha lista de poderes eh: "<< '\n';
     for( int i = 0; i < fada.poderes.size( ); i++ )
         out << fada.poderes[i] << '\t' << *fada.poderes[ i ] << '\n';
@@ -174,6 +186,7 @@ ostream &operator<<(ostream &out, const  Fada &fada){
 
     out <<'\n';
     
+    out <<'\n';
     return out;
 }
 
