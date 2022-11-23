@@ -27,12 +27,12 @@ public:
 
     int getNumPoderes( ) const;
     int getNumFada()const;
- //   string getName()const;
+
    string getNomePoder()const;
     static int getNumPoderesFada( );
     void setNumPoderes( int );
     void setNumFada( int );
- //   void setName( const string &);
+ 
     void setNomePoder( const string &);
     void cadastrarPoderesFada( const string & );
     void registerFadas(int);
@@ -60,7 +60,7 @@ private:
    static int numPoderesFada;
    const float FORCA;
 
-   //string name;
+  
    string nomePoder;
    
 };

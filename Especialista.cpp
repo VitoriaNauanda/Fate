@@ -1,6 +1,7 @@
 #include "Especialista.h"
 #include "Escola.h"
-
+#include "Personagem.h"
+#include "Personagem.cpp"
 #include <iostream>
 #include <cmath>
 using std::cout;
@@ -14,7 +15,7 @@ Especialista::Especialista():numArmasCadastradas(0){
 
 }
 
-Especialista::Especialista(int numArmas):numArmasCadastradas(0){
+Especialista::Especialista(const string &name, const int idade,int numArmas):numArmasCadastradas(0), Personagem(name,idade){
    nextEntrieInAtaque = 0; 
    ataquesSize = 0;
    numAtaque++;
@@ -23,7 +24,7 @@ Especialista::Especialista(int numArmas):numArmasCadastradas(0){
    
    cout<<"Vamos para Alfea"<<'\n'; 
 }
-Especialista::Especialista(const Especialista &other):numArmasCadastradas(0){
+Especialista::Especialista(const Especialista &other, const string &name, const int idade,int numArmas):numArmasCadastradas(0),Personagem(name,idade){
     numArmas++;
     numAtaque++;
     nextEntrieInAtaque = 0;
@@ -141,10 +142,12 @@ void Especialista::verificaEstado()  {
     if(numArmas != 0 && nextEntrieInAtaque >=1){
         cout<<"Rumo ao ataque"<<'\n';
     }
+    if(verificaIdade(getIdade()))
+        cout << "Pode defender Alfea" << '\n';
 }
 
 ostream &operator<<(ostream &out, const Especialista &especialista){
-
+    out << static_cast<Personagem>(especialista);
     out << "Minha lista de armas: "<< '\n';
     for( int i = 0; i < especialista.armas.size( ); i++ )
         out << especialista.armas[i] << '\t' << *especialista.armas[i] << '\n';

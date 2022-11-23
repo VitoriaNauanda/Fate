@@ -54,3 +54,18 @@ ostream &operator<<(ostream &out, const  Personagem &personagem){
    
     return out;
 }
+
+void Personagem::operator=(const Personagem &personagem){
+    this -> name = personagem.name;
+    this -> idade = personagem.idade;
+}
+bool Personagem::operator==(const Personagem &personagem)const{
+    return true;
+}
+bool Personagem::operator!=(const Personagem &personagem)const{
+    return !(*this == personagem);
+}
+
+void Personagem::operator!(){
+    
+}

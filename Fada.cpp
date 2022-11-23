@@ -11,7 +11,7 @@ int Fada::getNumPoderesFada( )
 { 
     return numPoderesFada; 
 }
-Fada::Fada():numPoderesCadastrados(0), FORCA(50.0){
+Fada::Fada():numPoderesCadastrados(0), FORCA(50.0), Personagem(){
     nextEntrieInFada = 0;
     fadaSize = 0;
     numFada++;
@@ -60,11 +60,7 @@ int Fada::getNumPoderes()const{
 int Fada::getNumFada( ) const {
     return numFada;
 }
-/*
-string Fada::getName() const{
-    return name;
-}
-*/
+
 string Fada::getNomePoder() const{
     return nomePoder;
 }
@@ -89,11 +85,7 @@ void Fada::setNumFada(int numFada) {
     this ->numFada = numFada;
     registerFadas(numFada);
 }
-/*
-void Fada::setName(const string &name){
-    this -> name = name;
-}
-*/
+
 void Fada::setNomePoder(const string &nomePoder){
     this -> nomePoder = nomePoder;
 }

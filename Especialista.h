@@ -7,14 +7,15 @@
 using std::string;
 using std::vector;
 using std::ostream;
-class Especialista
+class Especialista : Personagem
 {
     friend ostream &operator<<( ostream &, const Especialista & );
-public:
+public: 
 
     Especialista();
     Especialista(int);
-    Especialista(const Especialista &);
+    Especialista(const string &,const int,int);
+    Especialista(const Especialista &,const string &,const int,int);
     ~Especialista();
 
     int getNumArmas( ) const;

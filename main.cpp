@@ -16,7 +16,7 @@ using std::cout;
 
 int main()
 {
- /*
+
   Escola fate;
   Fada fada1;
   Fada fada2;
@@ -91,6 +91,6 @@ int main()
     delete alunos[i];
   for (int i = 0; i < armas.size(); i++)
     delete armas[i];
-  */
+
   return 0;
 }

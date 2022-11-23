@@ -23,7 +23,10 @@ public:
     void setIdade(int);
 
     bool verificaIdade( int);
-
+    void operator=(const Personagem &);
+    bool operator==(const Personagem &)const;
+    bool operator!=(const Personagem &)const;
+    void operator!();
 
 private:
     string name;    
