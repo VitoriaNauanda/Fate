@@ -18,9 +18,11 @@ public:
     ~FadaFogo();
 
     string getTipoTemperamento()const;
+    int getNivelFogo()const;
     void setTipoTemperamento( const string &);
+    void setNivelFogo( int);
     void validaProtecao();
-
+    void controlaPortal();
  
     void operator=(const FadaFogo &);
     bool operator==(const FadaFogo &)const;
@@ -30,6 +32,7 @@ public:
 private:
   
    string tipoTemperamento;
+   int nivelFogo;
 };
 
 #endif // FADAFOGO_H

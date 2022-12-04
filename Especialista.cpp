@@ -164,9 +164,12 @@ bool Especialista::operator!=( const Especialista & ) const{
     return false;
     
 }
-bool Especialista:: operator==( const Especialista & )const{
-    if(numArmas == numAtaque){
-        cout <<"Estamos bem"<<"\n";
+bool Especialista:: operator==( const Especialista &numArmas )const{
+    if(static_cast< Personagem  >(* this ) == static_cast < Personagem >( numArmas )){
+        return false;
+    }
+    if(numArmas == 0){
+        cout <<"Nao estamos bem"<<"\n";
         return true;
     }
     return false;

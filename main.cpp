@@ -8,6 +8,10 @@
 #include "Data.cpp"
 #include "Personagem.h"
 #include "Personagem.cpp"
+#include "FadaLuz.h"
+#include "FadaLuz.cpp"
+#include "FadaFogo.h"
+#include "FadaFogo.cpp"
 #include <iostream>
 #include <vector>
 using std::string;
@@ -21,6 +25,8 @@ int main()
   Fada fada1;
   Fada fada2;
   Fada fada3;
+  FadaFogo fada4;
+	FadaLuz fada5;
   Especialista especialista;
  
   Personagem personagem;
@@ -36,8 +42,20 @@ int main()
   string arma1 = "Punhal";
   string arma2 = "Espada";
   personagem.setName("Aisha");
-  personagem.setIdade(12);
-  
+  personagem.setName("Aisha");
+  personagem.setIdade(18);
+  fada1.setEstiloLuta("Poderes");
+  especialista.setEstiloLuta("Corporal");
+  fada1.setIdade(16);
+	fada4.setTipoTemperamento("Tempestuoso");
+  fada5.setHabilidade("Cegar");
+	especialista.setIdade(20);
+  fada4.setNivelFogo(100);
+  fada4.controlaPortal();
+  fada5.mensagemAlfea();
+  fada5.setRapidezLuz(20);
+  fada5.setDirecao(40);
+  fada5.calculaVelocidadeLuz();
   vector<string *> alunos;
   fada1.setName(nome1);
   alunos.push_back(new string(fada1.getName()));

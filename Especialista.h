@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Escola.h"
+#include "Personagem.h"
 using std::string;
 using std::vector;
 using std::ostream;

@@ -18,9 +18,13 @@ public:
     ~FadaLuz();
 
     string getHabilidade()const;
+    int getRapidezLuz()const;
+    int getDirecao()const;
     void setHabilidade( const string &);
+    void setRapidezLuz( int);
+    void setDirecao(int);
     void obstruirVisao();
-
+    int calculaVelocidadeLuz();
     void operator=(const FadaLuz &);
     bool operator==(const FadaLuz &)const;
     bool operator!=(const FadaLuz &)const;
@@ -28,6 +32,8 @@ public:
 private:
   
    string habilidades;
+   int rapidezLuz;
+   int direcao;
 };
 
 #endif // FADALUZ_H

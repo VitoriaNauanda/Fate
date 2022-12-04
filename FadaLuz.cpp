@@ -20,9 +20,28 @@ FadaLuz::FadaLuz(const FadaLuz &other, const string &name, const int idade, cons
 string FadaLuz::getHabilidade() const{
     return habilidades;
 }
-
+int FadaLuz::getRapidezLuz()const{
+    return rapidezLuz;
+}
+int FadaLuz::getDirecao()const{
+    return direcao;
+}
 void FadaLuz::setHabilidade(const string &habilidades){
     this->habilidades = habilidades;
+}
+void  FadaLuz::setRapidezLuz(int rapidezLuz){
+    if(rapidezLuz < 0){
+        rapidezLuz = 0;
+        return;
+    }
+    this->rapidezLuz = rapidezLuz;
+}
+void FadaLuz::setDirecao(int direcao){
+    if(direcao < 0){
+        direcao = 0;
+        return;
+    }
+    this->direcao = direcao;
 }
 void FadaLuz::obstruirVisao(){
     if(verificaIdade(getIdade())){
@@ -30,28 +49,40 @@ void FadaLuz::obstruirVisao(){
         transformacao();
     }
 }
-
+int FadaLuz::calculaVelocidadeLuz(){
+    return rapidezLuz * direcao;
+}
 ostream &operator<<(ostream &out, const  FadaLuz &fadaLuz){
 
     out << static_cast<Fada>(fadaLuz);
     out <<"Tipo de Habilidade" << '\n';
-    out << fadaLuz.getHabilidade() << '\n';
+    out << fadaLuz.habilidades << '\n';
     out <<'\n';
     
     out <<'\n';
     return out;
 }
 
-void FadaLuz::operator=(const FadaLuz &personagem){
-   this->habilidades = personagem.habilidades;
+void FadaLuz::operator=(const FadaLuz &fadaLuz){
+   this->habilidades = fadaLuz.habilidades;
 }
-bool FadaLuz::operator==(const FadaLuz &personagem)const{
-    return true;
+bool FadaLuz::operator==(const FadaLuz &fadaLuz)const{
+    if(static_cast< Fada  >(* this ) == static_cast < Fada >( fadaLuz )){
+        return false;
+    }
+    if(rapidezLuz == 0){
+        cout << "Necessita de mais velocidade" << '\n';
+        return true;
+    }
+    return false;
 }
-bool FadaLuz::operator!=(const FadaLuz &personagem)const{
-    return !(*this == personagem);
+bool FadaLuz::operator!=(const FadaLuz &fadaLuz)const{
+    return !(*this == fadaLuz);
 }
 
 void FadaLuz::operator!(){
-    
+    if(!rapidezLuz > 0){
+        cout <<"Nao eh possivel alcancar os olhos do inimigo"<< '\n';
+      
+    }
 }

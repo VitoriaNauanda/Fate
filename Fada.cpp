@@ -189,6 +189,9 @@ ostream &operator<<(ostream &out, const  Fada &fada){
     return false;
  }
  bool Fada::operator==( const Fada &numPoderes )const{
+    if(static_cast< Personagem  >(* this ) == static_cast < Personagem >( numPoderes)){
+        return false;
+    }
     if(numPoderes == 0){
         cout <<"Precisamos de mais poderes"<<'\n';
         return true;
