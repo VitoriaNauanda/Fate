@@ -16,7 +16,7 @@ Fada::Fada():numPoderesCadastrados(0), FORCA(50.0), Personagem(){
     fadaSize = 0;
     numFada++;
 }
-Fada::Fada(const string &name, const int idade, int numPoderes):numPoderesCadastrados(0), FORCA(50.0), Personagem(name,idade){
+Fada::Fada(const string &name, const string &estiloLuta,const int idade, int numPoderes):numPoderesCadastrados(0), FORCA(50.0), Personagem(name,estiloLuta,idade){
     
     setNumPoderes( numPoderes ); 
     nextEntrieInFada = 0;
@@ -26,7 +26,7 @@ Fada::Fada(const string &name, const int idade, int numPoderes):numPoderesCadast
   
     cout<<"Vamos para Alfea"<<'\n';
 }
-Fada::Fada(const Fada &other, const string &name, const int idade, int numPoderes):numPoderesCadastrados(0), FORCA(50.0), Personagem(name,idade){
+Fada::Fada(const Fada &other, const string &name, const string &estiloLuta, const int idade, int numPoderes):numPoderesCadastrados(0), FORCA(50.0), Personagem(name,estiloLuta,idade){
     numPoderes++;
     numFada++;
     
@@ -164,7 +164,9 @@ void Fada:: verificarForcaBruxoSangue(BruxoSangue bs){
 void Fada::mensagemAlfea(){
     if(verificaIdade(getIdade()))
         cout << "Pode estudar em Alfea" << '\n';
+    modoAtaque(getEstiloLuta());
 }
+
 ostream &operator<<(ostream &out, const  Fada &fada){
 
     out << static_cast<Personagem>(fada);

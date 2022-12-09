@@ -6,8 +6,9 @@ using std::cout;
 
 Personagem::Personagem():estiloLuta("Poderes"){}
 
-Personagem::Personagem(const string &name, int idade){
+Personagem::Personagem(const string &name, const string &estiloLuta, int idade){
     this->name = name;
+    this ->estiloLuta = estiloLuta;
     this->idade = idade;
    
 }

@@ -15,7 +15,7 @@ Especialista::Especialista():numArmasCadastradas(0){
 
 }
 
-Especialista::Especialista(const string &name, const int idade,int numArmas):numArmasCadastradas(0), Personagem(name,idade){
+Especialista::Especialista(const string &name, const string &estiloLuta, const int idade,int numArmas):numArmasCadastradas(0), Personagem(name,estiloLuta,idade){
    nextEntrieInAtaque = 0; 
    ataquesSize = 0;
    numAtaque++;
@@ -24,7 +24,7 @@ Especialista::Especialista(const string &name, const int idade,int numArmas):num
    
    cout<<"Vamos para Alfea"<<'\n'; 
 }
-Especialista::Especialista(const Especialista &other, const string &name, const int idade,int numArmas):numArmasCadastradas(0),Personagem(name,idade){
+Especialista::Especialista(const Especialista &other, const string &name, const string &estiloLuta,const int idade,int numArmas):numArmasCadastradas(0),Personagem(name,estiloLuta,idade){
     numArmas++;
     numAtaque++;
     nextEntrieInAtaque = 0;
@@ -144,6 +144,7 @@ void Especialista::verificaEstado()  {
     }
     if(verificaIdade(getIdade()))
         cout << "Pode defender Alfea" << '\n';
+        modoAtaque(getEstiloLuta());
 }
 
 ostream &operator<<(ostream &out, const Especialista &especialista){

@@ -20,8 +20,8 @@ class Fada: public Personagem
 public:
     Fada();
     Fada(int);
-    Fada(const string &,const int,int);
-    Fada(const Fada &,const string &,const int,int);
+    Fada(const string &,const string &,const int,int);
+    Fada(const Fada &,const string &,const string &,const int,int);
     ~Fada();
 
 

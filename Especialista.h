@@ -15,8 +15,8 @@ public:
 
     Especialista();
     Especialista(int);
-    Especialista(const string &,const int,int);
-    Especialista(const Especialista &,const string &,const int,int);
+    Especialista(const string &,const string &,const int,int);
+    Especialista(const Especialista &, const string &,const string &,const int,int);
     ~Especialista();
 
     int getNumArmas( ) const;

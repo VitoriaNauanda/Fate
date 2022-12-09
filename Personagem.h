@@ -12,7 +12,7 @@ class Personagem
     friend ostream &operator<<( ostream &, const Personagem & );
 public:
     Personagem();
-    Personagem(const string &,int);
+    Personagem(const string &,const string &,int);
     Personagem(const Personagem &);
     ~Personagem();
     string getName()const;
