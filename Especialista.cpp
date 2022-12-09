@@ -1,7 +1,7 @@
 #include "Especialista.h"
 #include "Escola.h"
 #include "Personagem.h"
-#include "Personagem.cpp"
+
 #include <iostream>
 #include <cmath>
 using std::cout;

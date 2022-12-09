@@ -8,7 +8,7 @@
 using std::string;
 using std::vector;
 using std::ostream;
-class Especialista : Personagem
+class Especialista : public Personagem
 {
     friend ostream &operator<<( ostream &, const Especialista & );
 public: 
