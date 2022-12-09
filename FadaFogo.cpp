@@ -1,6 +1,6 @@
 #include "FadaFogo.h"
 #include "Fada.h"
-#include "Fada.cpp"
+
 #include <iostream>
 #include <cmath>
 #include <iostream>

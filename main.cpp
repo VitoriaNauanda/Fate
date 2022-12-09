@@ -22,6 +22,8 @@ int main()
 {
 
   Escola fate;
+
+
   Fada fada1;
   Fada fada2;
   Fada fada3;
@@ -42,9 +44,10 @@ int main()
   string arma1 = "Punhal";
   string arma2 = "Espada";
   personagem.setName("Aisha");
-  personagem.setName("Aisha");
+
   personagem.setIdade(18);
   fada1.setEstiloLuta("Poderes");
+  especialista.setName("Sky");
   especialista.setEstiloLuta("Corporal");
   fada1.setIdade(16);
 	fada4.setTipoTemperamento("Tempestuoso");
@@ -58,11 +61,13 @@ int main()
   fada5.calculaVelocidadeLuz();
   vector<string *> alunos;
   fada1.setName(nome1);
+  
   alunos.push_back(new string(fada1.getName()));
   fada2.setName(nome2);
   alunos.push_back(new string(fada2.getName()));
   fada3.setName(nome3);
   alunos.push_back(new string(fada3.getName()));
+
 
   for (int i = 0; i < alunos.size(); i++)
     fate.cadastrarAlunoFate(*alunos[i]);
@@ -70,17 +75,17 @@ int main()
   fada1.registerFadas(alunos.size());
 
   fate.registerProfessores("Andreas");
-
+  vector<string *> poderes;
   fada1.setNomePoder(poder1);
-  fada1.cadastrarPoderesFada(fada1.getNomePoder());
+  poderes.push_back(new string(fada1.getNomePoder()));
   fada2.setNomePoder(poder2);
-  fada2.cadastrarPoderesFada(fada2.getNomePoder());
+  poderes.push_back(new string(fada2.getNomePoder()));
   fada3.setNomePoder(poder3);
-  fada3.cadastrarPoderesFada(fada3.getNomePoder());    
+  poderes.push_back(new string(fada3.getNomePoder()));    
+ 
+  for (int i = 0; i < poderes.size(); i++)
+    fada1.cadastrarPoderesFada(*poderes[i]);
 
-  fada2 = fada1;
-  cout << fada1;
-  cout << fada2;
 
   fada1.transformacao();
   vector<string *> armas;
@@ -99,16 +104,22 @@ int main()
   bruxo.tipoPoder = "gelo";
   bruxo.forcaAtaque = 75;
   fada1.verificarForcaBruxoSangue(bruxo);
- 
+  cout<<"ESTILO LUTA: "<< fada1.getEstiloLuta()<<'\n';
   cout << fate;
   cout << fada1;
   cout << especialista;
   cout << personagem;
-
+  
+ 
   for (int i = 0; i < alunos.size(); i++)
     delete alunos[i];
   for (int i = 0; i < armas.size(); i++)
     delete armas[i];
+  for (int i = 0; i < poderes.size(); i++)
+    delete poderes[i];
+  //alunos.clear();
+ // armas.clear();
+ // poderes.clear();
 
   return 0;
 }

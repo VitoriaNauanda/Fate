@@ -17,7 +17,7 @@ FadaLuz::FadaLuz(const FadaLuz &other, const string &name,const string &estiloLu
    this->habilidades = other.habilidades;
 }
 FadaLuz::~FadaLuz(){
-       
+  
 }
 
 string FadaLuz::getHabilidade() const{

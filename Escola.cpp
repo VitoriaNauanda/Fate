@@ -18,18 +18,19 @@ int Escola::getNumAlunosAlfea( )
 }
 
 Escola::Escola():numAlunosCadastrados(0), fadaPoderes(), especialistaArmas(){
-   nextEntrieInProfessores = 0; 
-   professoresSize = 0;
-   numProfessor++;
+   this->nextEntrieInProfessores = 0; 
+   this->professoresSize = 0;
+   this->numProfessor++;
+   
    setNumProfessor(numProfessor);
    cout <<"Ensina alunos"<<'\n';
 }
 
 Escola::Escola(int numAlunos, const Data &dataOut):numAlunosCadastrados(0){
     setNumAlunos( numAlunos );
-    nextEntrieInProfessores = 0;
-    professoresSize = 0;
-    numProfessor++;
+    this->nextEntrieInProfessores = 0;
+    this->professoresSize = 0;
+    this->numProfessor++;
     
     setNumProfessor(numProfessor);
    
@@ -38,10 +39,9 @@ Escola::Escola(int numAlunos, const Data &dataOut):numAlunosCadastrados(0){
 
 
 Escola::Escola(const Escola &other):numAlunosCadastrados(0), fadaPoderes(other.fadaPoderes), especialistaArmas(other.especialistaArmas){
-    numAlunos++;
-    numProfessor++;
-    nextEntrieInProfessores = 0; 
-    professoresSize = 0;
+    this->numAlunos++;
+    this->numProfessor++;
+    
     
     setNumAlunos(other.numAlunos); 
     cout << "Em copia as fadas sao: " << '\n';
@@ -54,6 +54,7 @@ Escola::Escola(const Escola &other):numAlunosCadastrados(0), fadaPoderes(other.f
     cout<<"Alfea  esta  protegida"<<'\n';
     
     this->alunos.resize( other.alunos.size() );
+    this->professoresSize = other.professoresSize;
     for( auto i = 0; i < other.alunos.size( ); i++ )
         this->alunos[ i ] = other.alunos[ i ]; 
    
@@ -64,13 +65,14 @@ Escola::Escola(const Escola &other):numAlunosCadastrados(0), fadaPoderes(other.f
   
 }
 Escola::~Escola(){
-    numAlunos--;
-    numProfessor--;
-    delete[] professoresPtr;
+    cout <<"Expulsa alunos"<<'\n';
+    this->numAlunos--;
+    this->numProfessor--;
+    delete [] professoresPtr;
     for( auto i = 0; i < alunos.size( ); i++ )
         delete this->alunos[ i ]; 
-    this -> alunos.clear();
-    cout <<"Expulsa alunos"<<'\n';
+    this->alunos.clear();
+   
 }
 
 void Escola::setNumAlunos(int numAlunos){
@@ -102,14 +104,13 @@ int Escola::getNumProfessor( ) const {
 }
 void Escola::cadastrarAlunoFate(const string &novoAluno){
 
-    if( alunos.size( ) < numAlunos ) 
-    {
-        numAlunosCadastrados++;
-        alunos.push_back( new string(novoAluno) );        
-        return;
-    }
+   
+    numAlunosCadastrados++;
+    alunos.push_back( new string(novoAluno) );        
+    return;
 
-    cout << "Nao eh possivel cadastrar " << novoAluno << '.' << " Turma cheia.\n";
+
+   // cout << "Nao eh possivel cadastrar " << novoAluno << '.' << " Turma cheia.\n";
 
 }
 
@@ -228,6 +229,7 @@ bool Escola::operator==( const Escola &numAlunos )const{
     
     this->nextEntrieInProfessores = cop.nextEntrieInProfessores;
     this->professoresPtr = new string*[this->professoresSize];
+    this->professoresSize = cop.professoresSize;
     for(int i = 0; i < nextEntrieInProfessores; i++)
         this -> professoresPtr[i] = cop.professoresPtr[i];   
  }

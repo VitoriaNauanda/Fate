@@ -64,7 +64,7 @@ ostream &operator<<(ostream &out, const  Personagem &personagem){
     out << "Idade personagem: " << '\n';
     out << personagem.idade <<'\n';
     out << "Estilo Luta: "<< '\n';
-    out << personagem.estiloLuta <<'n';
+    out << personagem.estiloLuta <<'\n';
     return out;
 }
 

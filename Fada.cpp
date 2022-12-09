@@ -18,6 +18,9 @@ Fada::Fada():numPoderesCadastrados(0), FORCA(50.0), Personagem(){
 }
 Fada ::Fada(int numPoderes):numPoderesCadastrados(0), FORCA(50.0){
     this -> numPoderes = numPoderes;
+    nextEntrieInFada = 0;
+    fadaSize = 0;
+    numFada++;
 }
 
 Fada::Fada(const string &name, const string &estiloLuta,const int idade, int numPoderes):numPoderesCadastrados(0), FORCA(50.0), Personagem(name,estiloLuta,idade){
@@ -50,10 +53,10 @@ Fada::~Fada(){
     numPoderes--;
     numFada--;
 
-    delete[] fadaPtr;
+    delete [] fadaPtr;
     for( auto i = 0; i < poderes.size( ); i++ )
         delete this->poderes[ i ]; 
-    this -> poderes.clear();
+    this->poderes.clear();
     
     cout<<"Saindo de Alfea"<<'\n';
     
@@ -94,14 +97,13 @@ void Fada::setNomePoder(const string &nomePoder){
     this -> nomePoder = nomePoder;
 }
 void Fada::cadastrarPoderesFada(const string &novoPoder){
-    if( poderes.size( ) <= numPoderes ) 
-    {
-        numPoderesCadastrados++;
-        poderes.push_back( new string(novoPoder) );        
-        return;
-    }
+    
+    numPoderesCadastrados++;
+    poderes.push_back( new string(novoPoder) );        
+    return;
+    
 
-    cout << "Nao eh possivel cadastrar " << novoPoder << '\n';
+    
 
 }
 void Fada::registerFadas( int numFada){
@@ -166,9 +168,9 @@ void Fada:: verificarForcaBruxoSangue(BruxoSangue bs){
 }
 
 void Fada::mensagemAlfea(){
-    if(verificaIdade(getIdade()))
+    if(this->verificaIdade(this->getIdade()))
         cout << "Pode estudar em Alfea" << '\n';
-    modoAtaque(getEstiloLuta());
+        modoAtaque(getEstiloLuta());
 }
 
 ostream &operator<<(ostream &out, const  Fada &fada){
@@ -222,6 +224,7 @@ void  Fada::operator=( const Fada & other){
     
     this->nextEntrieInFada = other.nextEntrieInFada;
     this->fadaPtr = new int[this->fadaSize];
+    this->fadaSize = other.fadaSize;
     for(int i = 0; i < nextEntrieInFada; i++)
         this -> fadaPtr[i] = other.fadaPtr[i]; 
     

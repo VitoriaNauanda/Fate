@@ -12,10 +12,13 @@ int Especialista::getNumArmarioAlfea( )
     return numArmarioAlfea; 
 }
 Especialista::Especialista():numArmasCadastradas(0){
-
+    nextEntrieInAtaque = 0; 
+    ataquesSize = 0;
 }
 Especialista::Especialista(int numArmas):numArmasCadastradas(0){
     this -> numArmas =  numArmas;
+    nextEntrieInAtaque = 0; 
+    ataquesSize = 0;
 }
 
 Especialista::Especialista(const string &name, const string &estiloLuta, const int idade,int numArmas):numArmasCadastradas(0), Personagem(name,estiloLuta,idade){
@@ -30,8 +33,7 @@ Especialista::Especialista(const string &name, const string &estiloLuta, const i
 Especialista::Especialista(const Especialista &other, const string &name, const string &estiloLuta,const int idade,int numArmas):numArmasCadastradas(0),Personagem(name,estiloLuta,idade){
     numArmas++;
     numAtaque++;
-    nextEntrieInAtaque = 0;
-    ataquesSize = 0;
+    
     setNumArmas(other.numArmas); 
     
     this->armas.resize( other.armas.size() );
@@ -40,16 +42,17 @@ Especialista::Especialista(const Especialista &other, const string &name, const 
     
     this->nextEntrieInAtaque = other.nextEntrieInAtaque;
     this->ataquesPtr = new int[this->ataquesSize];
+    this-> ataquesSize = other.ataquesSize;
     for(int i = 0; i < nextEntrieInAtaque; i++)
         this -> ataquesPtr[i] = other.ataquesPtr[i];  
 }
 Especialista::~Especialista(){
     numArmas--;
     numAtaque--;
-    delete[] ataquesPtr;
+    delete [] ataquesPtr;
     for( auto i = 0; i < armas.size( ); i++ )
         delete this->armas[ i ]; 
-    this -> armas.clear();
+    this->armas.clear();
     
     cout<<"Saindo de Alfea"<<'\n';
 }
@@ -89,14 +92,14 @@ string Especialista::getArma() const{
     return arma;
 }
 void Especialista::cadastrarArmasEspecialista(const string &novaArma){
-    if( armas.size( ) < numArmas ) 
-    {
-        numArmasCadastradas++;
-        armas.push_back( new string(novaArma) );        
-        return;
-    }
+   
+  
+    numArmasCadastradas++;
+    armas.push_back( new string(novaArma) );        
+    return;
 
-    cout << "Nao eh possivel cadastrar " << novaArma << '.' << " Armario cheio.\n";
+
+    //cout << "Nao eh possivel cadastrar " << novaArma << '.' << " Armario cheio.\n";
 
 }
 
@@ -196,6 +199,7 @@ void  Especialista::operator=( const Especialista &other ){
     
     this->nextEntrieInAtaque = other.nextEntrieInAtaque;
     this->ataquesPtr = new int[this->ataquesSize];
+    this->ataquesSize = other.ataquesSize;
     for(int i = 0; i < nextEntrieInAtaque; i++)
         this -> ataquesPtr[i] = other.ataquesPtr[i];
 }
