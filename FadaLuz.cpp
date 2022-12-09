@@ -1,6 +1,6 @@
 #include "FadaLuz.h"
 #include "Fada.h"
-#include "Fada.cpp"
+
 #include <iostream>
 #include <cmath>
 #include <iostream>
@@ -9,11 +9,11 @@ using std::cout;
 
 FadaLuz::FadaLuz():Fada(){}
 
-FadaLuz::FadaLuz(const string &name, const int idade, const int numPoderes, const string &habilidades):Fada(name,idade, numPoderes){
+FadaLuz::FadaLuz(const string &name,const string &estiloLuta, const int idade, const int numPoderes, const string &habilidades):Fada(name,estiloLuta,idade, numPoderes){
     this->habilidades = habilidades;
 }
 
-FadaLuz::FadaLuz(const FadaLuz &other, const string &name, const int idade, const int numPoderes,const string &tipoTemperaemnto):Fada(name,idade,numPoderes){
+FadaLuz::FadaLuz(const FadaLuz &other, const string &name,const string &estiloLuta, const int idade, const int numPoderes,const string &tipoTemperaemnto):Fada(name,estiloLuta,idade,numPoderes){
    this->habilidades = other.habilidades;
 }
 

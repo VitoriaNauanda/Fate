@@ -1,7 +1,7 @@
 #include "Fada.h"
 #include "Escola.h"
 #include "Personagem.h"
-#include "Personagem.cpp"
+
 #include <cmath>
 #include <iostream>
 using std::cout;

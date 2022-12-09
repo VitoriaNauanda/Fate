@@ -13,8 +13,8 @@ class FadaLuz: public Fada
     friend ostream &operator<<( ostream &, const FadaLuz & );
 public:
     FadaLuz();
-    FadaLuz(const string &,const int, const int ,const string&);
-    FadaLuz(const FadaLuz &,const string &,const int, int, const string&);
+    FadaLuz(const string &,const string &,const int, const int ,const string&);
+    FadaLuz(const FadaLuz &,const string &,const string &,const int, int, const string&);
     ~FadaLuz();
 
     string getHabilidade()const;

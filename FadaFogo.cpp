@@ -9,11 +9,11 @@ using std::cout;
 
 FadaFogo::FadaFogo():Fada(){}
 
-FadaFogo::FadaFogo(const string &name, const int idade, const int numPoderes, const string &tipoTemperamento):Fada(name,idade, numPoderes){
+FadaFogo::FadaFogo(const string &name,const string &estiloLuta, const int idade, const int numPoderes, const string &tipoTemperamento):Fada(name,estiloLuta,idade, numPoderes){
     this->tipoTemperamento = tipoTemperamento;
 }
 
-FadaFogo::FadaFogo(const FadaFogo &other, const string &name, const int idade, const int numPoderes,const string &tipoTemperaemnto):Fada(name,idade,numPoderes){
+FadaFogo::FadaFogo(const FadaFogo &other, const string &name, const string &estiloLuta,const int idade, const int numPoderes,const string &tipoTemperaemnto):Fada(name,estiloLuta,idade,numPoderes){
    this->tipoTemperamento = other.tipoTemperamento;
 }
 

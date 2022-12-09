@@ -13,8 +13,8 @@ class FadaFogo: public Fada
     friend ostream &operator<<( ostream &, const FadaFogo & );
 public:
     FadaFogo();
-    FadaFogo(const string &,const int, const int ,const string&);
-    FadaFogo(const FadaFogo &,const string &,const int, int, const string&);
+    FadaFogo(const string &,const string &,const int, const int ,const string&);
+    FadaFogo(const FadaFogo &,const string &,const string &,const int, int, const string&);
     ~FadaFogo();
 
     string getTipoTemperamento()const;
