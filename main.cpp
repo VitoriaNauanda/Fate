@@ -45,11 +45,11 @@ int main()
   personagem.setName("Aisha");
   personagem.setIdade(18);
   fada1.setEstiloLuta("Poderes");
-//  especialista.setEstiloLuta("Corporal");
+  especialista.setEstiloLuta("Corporal");
   fada1.setIdade(16);
 	fada4.setTipoTemperamento("Tempestuoso");
   fada5.setHabilidade("Cegar");
-//	especialista.setIdade(20);
+  especialista.setIdade(20);
   fada4.setNivelFogo(100);
   fada4.controlaPortal();
   fada5.mensagemAlfea();

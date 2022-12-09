@@ -16,6 +16,10 @@ FadaFogo::FadaFogo(const string &name,const string &estiloLuta, const int idade,
 FadaFogo::FadaFogo(const FadaFogo &other, const string &name, const string &estiloLuta,const int idade, const int numPoderes,const string &tipoTemperaemnto):Fada(name,estiloLuta,idade,numPoderes){
    this->tipoTemperamento = other.tipoTemperamento;
 }
+FadaFogo::~FadaFogo(){
+ 
+    
+}
 
 string FadaFogo::getTipoTemperamento() const{
     return tipoTemperamento;
