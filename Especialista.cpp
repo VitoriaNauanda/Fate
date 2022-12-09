@@ -14,6 +14,9 @@ int Especialista::getNumArmarioAlfea( )
 Especialista::Especialista():numArmasCadastradas(0){
 
 }
+Especialista::Especialista(int numArmas):numArmasCadastradas(0){
+    this -> numArmas =  numArmas;
+}
 
 Especialista::Especialista(const string &name, const string &estiloLuta, const int idade,int numArmas):numArmasCadastradas(0), Personagem(name,estiloLuta,idade){
    nextEntrieInAtaque = 0; 

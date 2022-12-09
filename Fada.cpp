@@ -16,6 +16,10 @@ Fada::Fada():numPoderesCadastrados(0), FORCA(50.0), Personagem(){
     fadaSize = 0;
     numFada++;
 }
+Fada ::Fada(int numPoderes):numPoderesCadastrados(0), FORCA(50.0){
+    this -> numPoderes = numPoderes;
+}
+
 Fada::Fada(const string &name, const string &estiloLuta,const int idade, int numPoderes):numPoderesCadastrados(0), FORCA(50.0), Personagem(name,estiloLuta,idade){
     
     setNumPoderes( numPoderes ); 
