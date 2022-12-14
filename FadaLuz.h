@@ -25,6 +25,11 @@ public:
     void setDirecao(int);
     void obstruirVisao();
     int calculaVelocidadeLuz();
+
+    //uso do virtual de Fada
+    void transformacao();
+    void mensagemAlfea();
+    void printPersonagem();
     void operator=(const FadaLuz &);
     bool operator==(const FadaLuz &)const;
     bool operator!=(const FadaLuz &)const;

@@ -58,6 +58,57 @@ void Personagem::modoAtaque( const string &modoAtaque){
     }
      cout << "É um especialista" << '\n';
 }
+
+string Personagem::getLocalOrigem()const{
+    return localOrigem;
+}
+string Personagem::getConteudoCarta()const{
+    return conteudoCarta;
+}
+
+void Personagem:: setPessoaMagica( bool pessoaMagica = false ) {
+    this->pessoaMagica = pessoaMagica;
+}
+void Personagem::setLocalOrigem(const string &localOrigem){
+    this->localOrigem = localOrigem;
+}
+
+void Personagem::setConteudoCarta(const string &conteudoCarta){
+    this->conteudoCarta = conteudoCarta;
+}
+bool Personagem::getPessoaMagica()const{
+    return pessoaMagica;
+}
+bool Personagem:: isPessoaMagica( ) {
+    return getPessoaMagica();
+}
+
+void Personagem :: atravessarPortal( ){
+    if(this->pessoaMagica == true){
+        cout << "Pode atravessar o portal" << '\n';
+    }
+    cout << "Não pode atravessar o portal" << '\n';
+}
+
+void Personagem :: recebeCartaConvocacao() { 
+    if(this->pessoaMagica == true){
+        cout << "Pode receber a carta" << '\n';
+        if(conteudoCarta == "Nao"){
+            cout << "Nao pode estudar em Alfea" << '\n';
+        }
+        cout << "Pode estudar em Alfea" << '\n';
+    }
+}
+void Personagem :: printPersonagem(){
+    cout <<"Nome personagem: "  << this->name << '\n';
+    cout << "Idade personagem: " << this->idade <<'\n';
+    cout << "Estilo Luta: "<<this->estiloLuta <<'\n';
+    cout << "Personagem magico" << this->pessoaMagica <<'\n';
+    cout << "Local origem: " << this->localOrigem << '\n';
+    cout << "Conteudo carta: " << this->conteudoCarta << '\n';
+}
+
+/*
 ostream &operator<<(ostream &out, const  Personagem &personagem){
     out <<"Nome personagem: " << '\n';
     out << personagem.name << '\n';
@@ -88,3 +139,4 @@ void Personagem::operator!(){
         cout << "É preciso adicionar um estilo de luta" << '\n';
     }
 }
+*/

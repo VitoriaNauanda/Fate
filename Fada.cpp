@@ -173,9 +173,43 @@ void Fada::mensagemAlfea(){
         modoAtaque(getEstiloLuta());
 }
 
+void Fada :: atravessarPortal( ){
+   if(!isPessoaMagica()){
+    cout << "Nao eh possivel atravessar portal"<<'\n';
+   }
+   if(isPessoaMagica()){
+    cout << "Eh possivel atravessar portal"<<'\n';
+   }
+}
+
+void Fada :: recebeCartaConvocacao() { 
+    
+    if(!isPessoaMagica()){
+        cout << "Nao pode receber a carta, pois nao eh uma pessoa magica" << '\n';
+        cout << "Nao pode estudar em Alfea" << '\n';
+    }
+   if(isPessoaMagica()){
+        cout << "Pode estudar em Alfea" << '\n';
+   }
+}
+
+void Fada::printFada(){
+    Personagem::printPersonagem();
+    cout << "Minha lista de poderes eh: "<< '\n';
+    for( int i = 0; i < poderes.size( ); i++ )
+        cout << poderes[i] << '\t' << *poderes[ i ] << '\n';
+       
+    cout << "\nQuantidade de Fadas: "<<'\n';
+    for( int i = 0; i < nextEntrieInFada; i++ )
+        cout << fadaPtr[i] << "\n";
+
+    cout <<'\n';
+}
+/*
 ostream &operator<<(ostream &out, const  Fada &fada){
 
-    out << static_cast<Personagem>(fada);
+    //out << static_cast<Personagem>(fada);
+    
     out << "Minha lista de poderes eh: "<< '\n';
     for( int i = 0; i < fada.poderes.size( ); i++ )
         out << fada.poderes[i] << '\t' << *fada.poderes[ i ] << '\n';
@@ -197,9 +231,11 @@ ostream &operator<<(ostream &out, const  Fada &fada){
     return false;
  }
  bool Fada::operator==( const Fada &numPoderes )const{
+   
     if(static_cast< Personagem  >(* this ) == static_cast < Personagem >( numPoderes)){
         return false;
     }
+   
     if(numPoderes == 0){
         cout <<"Precisamos de mais poderes"<<'\n';
         return true;
@@ -229,3 +265,5 @@ void  Fada::operator=( const Fada & other){
         this -> fadaPtr[i] = other.fadaPtr[i]; 
     
 }
+
+*/

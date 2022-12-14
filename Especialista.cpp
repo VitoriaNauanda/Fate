@@ -152,9 +152,31 @@ void Especialista::verificaEstado()  {
         cout << "Pode defender Alfea" << '\n';
         modoAtaque(getEstiloLuta());
 }
+void Especialista :: atravessarPortal( ){
+   if(!isPessoaMagica()){
+    cout << "Nao eh possivel atravessar portal"<<'\n';
+   }
+   if(isPessoaMagica()){
+    cout << "Eh possivel atravessar portal"<<'\n';
+    verificaEstado();
+   }
+}
 
+void Especialista :: recebeCartaConvocacao() { 
+    
+    if(!isPessoaMagica()){
+        cout << "Nao pode receber a carta, pois nao eh uma pessoa magica" << '\n';
+        cout << "Nao pode defender Alfea" << '\n';
+    }
+   if(isPessoaMagica()){
+        cout << "Pode estudar em Alfea" << '\n';
+   }
+}
 ostream &operator<<(ostream &out, const Especialista &especialista){
-    out << static_cast<Personagem>(especialista);
+    out << especialista.name << '\n';
+    out << especialista.estiloLuta  << '\n';
+    out << especialista.idade  << '\n';
+    out << especialista.numArmas << '\n';
     out << "Minha lista de armas: "<< '\n';
     for( int i = 0; i < especialista.armas.size( ); i++ )
         out << especialista.armas[i] << '\t' << *especialista.armas[i] << '\n';
@@ -165,16 +187,16 @@ ostream &operator<<(ostream &out, const Especialista &especialista){
     return out;
 }
 
-bool Especialista::operator!=( const Especialista & ) const{
+bool Especialista::operator!=( const Especialista &numArmas ) const{
     if(numArmas!=0)
         return true;
     return false;
     
 }
 bool Especialista:: operator==( const Especialista &numArmas )const{
-    if(static_cast< Personagem  >(* this ) == static_cast < Personagem >( numArmas )){
+    /*if(static_cast< Personagem  >(* this ) == static_cast < Personagem >( numArmas )){
         return false;
-    }
+    }*/
     if(numArmas == 0){
         cout <<"Nao estamos bem"<<"\n";
         return true;

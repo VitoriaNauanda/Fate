@@ -55,13 +55,35 @@ void FadaLuz::obstruirVisao(){
 int FadaLuz::calculaVelocidadeLuz(){
     return rapidezLuz * direcao;
 }
-ostream &operator<<(ostream &out, const  FadaLuz &fadaLuz){
+void FadaLuz::transformacao(){
+    
+   
+    if(numPoderes!=0){
+        cout<<"Pode se transformar" <<'\n';
+    }
+    cout <<"Estudar mais as tecnicas e historia de transformacao"<<'\n';
+    obstruirVisao();       
 
-    out << static_cast<Fada>(fadaLuz);
+    cout <<"Ainda nao eh possivel se transformar e nem usar poderes"<<'\n';
+}
+
+void FadaLuz::mensagemAlfea(){
+    if(this->verificaIdade(this->getIdade())){
+        cout << "Pode estudar em Alfea pela idade" << '\n';
+    } 
+    cout << "Nao pode estudar em Alfea pela idade" << '\n';   
+}
+
+ostream &operator<<(ostream &out, const  FadaLuz &fadaLuz){
+    
+    
     out <<"Tipo de Habilidade" << '\n';
     out << fadaLuz.habilidades << '\n';
     out <<'\n';
-    
+    out <<"Rapidez" << '\n';
+    out << fadaLuz.rapidezLuz << '\n';
+    out <<"Direcao" << '\n';
+    out << fadaLuz.direcao << '\n';
     out <<'\n';
     return out;
 }
@@ -70,9 +92,9 @@ void FadaLuz::operator=(const FadaLuz &fadaLuz){
    this->habilidades = fadaLuz.habilidades;
 }
 bool FadaLuz::operator==(const FadaLuz &fadaLuz)const{
-    if(static_cast< Fada  >(* this ) == static_cast < Fada >( fadaLuz )){
+    /*if(static_cast< Fada  >(* this ) == static_cast < Fada >( fadaLuz )){
         return false;
-    }
+    }*/
     if(rapidezLuz == 0){
         cout << "Necessita de mais velocidade" << '\n';
         return true;

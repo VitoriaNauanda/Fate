@@ -32,12 +32,15 @@ public:
    
     void verificaEstado();
     void fortaleza();
+    //uso do virtual de personagem
+    void atravessarPortal();
+    void recebeCartaConvocacao();
 
     bool operator!=( const Especialista & ) const;
     bool operator==( const Especialista & )const;
     bool operator!() const;
     void operator=( const Especialista & );
-private:
+protected:
     int numArmas;
     int numArmasCadastradas;
     vector<string *> armas;

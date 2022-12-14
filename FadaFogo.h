@@ -23,7 +23,10 @@ public:
     void setNivelFogo( int);
     void validaProtecao();
     void controlaPortal();
- 
+    //uso do virtual de Fada
+    void transformacao();
+    void mensagemAlfea();
+    
     void operator=(const FadaFogo &);
     bool operator==(const FadaFogo &)const;
     bool operator!=(const FadaFogo &)const;

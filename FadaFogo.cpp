@@ -50,9 +50,30 @@ void FadaFogo::controlaPortal(){
     }
      cout << "Eh possivel abrir um portal" << '\n';
 }
+void FadaFogo::transformacao(){
+    
+   
+    if(numPoderes!=0){
+        
+        controlaPortal();
+    }
+    cout <<"Nao eh possivel controlar o portal"<<'\n';
+    
+    
+}
+
+void FadaFogo::mensagemAlfea(){
+    if(this->verificaIdade(this->getIdade())){
+        cout << "Pode estudar em Alfea pela idade" << '\n';
+        validaProtecao();
+    } 
+    cout << "Nao pode estudar em Alfea pela idade" << '\n';   
+}
+
+
 ostream &operator<<(ostream &out, const  FadaFogo &fadaFogo){
 
-    out << static_cast<Fada>(fadaFogo);
+    //out << static_cast<Fada>(fadaFogo);
     out <<"Tipo de temperamento" << '\n';
     out << fadaFogo.tipoTemperamento << '\n';
     out <<'\n';
@@ -66,9 +87,9 @@ void FadaFogo::operator=(const FadaFogo &personagem){
    this->tipoTemperamento = personagem.tipoTemperamento;
 }
 bool FadaFogo::operator==(const FadaFogo &personagem)const{    
-    if(static_cast< Fada  >(* this ) == static_cast < Fada >( personagem)){
+   /* if(static_cast< Fada  >(* this ) == static_cast < Fada >( personagem)){
         return false;
-    }
+    }*/
     if(nivelFogo == 0){
         cout << "Precisamos aumentar o nivel de fogos" << '\n';
         return true;

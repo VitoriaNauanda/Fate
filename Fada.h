@@ -16,7 +16,7 @@ struct BruxoSangue{
 };
 class Fada: public Personagem
 {
-    friend ostream &operator<<( ostream &, const Fada & );
+   // friend ostream &operator<<( ostream &, const Fada & );
 public:
     Fada();
     Fada(int);
@@ -37,17 +37,22 @@ public:
     void cadastrarPoderesFada( const string & );
     void registerFadas(int);
 
-    void transformacao();
+    virtual void transformacao();
+    virtual void mensagemAlfea();
     void printDadosBruxoSangue(BruxoSangue);
     void verificarForcaBruxoSangue(BruxoSangue);
-
-    void mensagemAlfea();
-
+    void printFada();
+    
+    //uso do virtual de personagem
+    void atravessarPortal();
+    void recebeCartaConvocacao();
+    /*
     bool operator!=( const Fada & ) const;
     bool operator==( const Fada & )const;
     bool operator!() const;
-    void operator=( const Fada & );
-private:
+    void operator=( const Fada & ); 
+    */
+protected:
    int numPoderes;
    int numPoderesCadastrados;
    vector<string *> poderes;
